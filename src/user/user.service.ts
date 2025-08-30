@@ -11,13 +11,22 @@ export class UserService {
         
     }
 
+    findAll(){
+        return this.users.find()
+    }
+
     create(newUser:createUserDto){
         let newu=this.users.create(newUser)
         this.users.save(newu)
+        return newu
     }
  
     update(id:number,upuser:updateUserDto){
         this.users.update(id,upuser)
+    }
+
+    findByEmail(email:string){
+        return this.users.findOneBy({email})
     }
 
 }
